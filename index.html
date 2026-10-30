@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tra cứu thuốc</title>
+<meta name="description" content="Tra cứu thông tin thuốc – Nhà thuốc Bệnh viện">
+<meta name="theme-color" content="#0d6b5c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Tra cứu thuốc">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="favicon.png">
+<script>
+  // ĐƯỜNG LINK APP APPS SCRIPT (link /exec). Khi triển khai lại mà link đổi, chỉ cần sửa dòng này.
+  var APP_URL = 'https://script.google.com/macros/s/AKfycbwzvZc7pnHTZCmQGvPCyyi1u96k10Z8ruBl5hqAo6vFRrEEIU0YtHmV_RmqKfqoU2_-TQ/exec';
+
+  // Mở từ biểu tượng ngoài màn hình chính → vào thẳng app
+  var launchedAsApp = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches)
+    || window.navigator.standalone === true
+    || /[?&]app=1/.test(location.search);
+  if (launchedAsApp) location.replace(APP_URL);
+</script>
+<style>
+  :root { --brand: #0d6b5c; --ink: #15302b; --muted: #5b716c; --bg: #f4f7f6; --card: #fff; --line: #d9e3e0; }
+  @media (prefers-color-scheme: dark) { :root { --ink: #e3ece9; --muted: #93a8a3; --bg: #0f1716; --card: #16211f; --line: #263533; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; background: var(--bg); color: var(--ink);
+    font: 16px/1.55 -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+    display: flex; justify-content: center; padding: max(24px, env(safe-area-inset-top)) 16px 32px; }
+  main { width: 100%; max-width: 440px; display: grid; gap: 20px; align-content: start; }
+  .head { display: flex; gap: 14px; align-items: center; }
+  .head img { width: 64px; height: 64px; border-radius: 15px; }
+  h1 { margin: 0; font-size: 22px; line-height: 1.25; }
+  .sub { color: var(--muted); font-size: 14px; }
+  .open { display: block; text-align: center; background: var(--brand); color: #fff; text-decoration: none;
+    font-weight: 600; font-size: 17px; padding: 14px; border-radius: 12px; }
+  .open:focus-visible { outline: 3px solid var(--line); outline-offset: 2px; }
+  section { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+  h2 { margin: 0 0 8px; font-size: 15px; }
+  ol { margin: 0; padding-left: 20px; display: grid; gap: 4px; font-size: 15px; }
+  .hide { display: none; }
+  .note { font-size: 13px; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <div class="head">
+    <img src="icon-192.png" alt="">
+    <div>
+      <h1>Tra cứu thuốc</h1>
+      <div class="sub">Nhà thuốc Bệnh viện · dành cho bác sĩ</div>
+    </div>
+  </div>
+
+  <a class="open" id="open" href="#">Mở app tra cứu</a>
+
+  <section id="ios">
+    <h2>Thêm vào màn hình chính (iPhone)</h2>
+    <ol>
+      <li>Mở trang này bằng <b>Safari</b>.</li>
+      <li>Bấm nút <b>Chia sẻ</b> (hình vuông có mũi tên lên).</li>
+      <li>Chọn <b>Thêm vào MH chính</b> → <b>Thêm</b>.</li>
+    </ol>
+  </section>
+
+  <section id="android">
+    <h2>Thêm vào màn hình chính (Android)</h2>
+    <ol>
+      <li>Mở trang này bằng <b>Chrome</b>.</li>
+      <li>Bấm <b>⋮</b> ở góc trên bên phải.</li>
+      <li>Chọn <b>Thêm vào màn hình chính</b> (hoặc <b>Cài đặt ứng dụng</b>).</li>
+    </ol>
+  </section>
+
+  <p class="note">Lần đầu mở, đăng nhập tài khoản Google nếu được hỏi. Thông tin trong app do Khoa Dược biên soạn để tham khảo nhanh.</p>
+</main>
+<script>
+  document.getElementById('open').href = APP_URL;
+  var ua = navigator.userAgent;
+  var isIOS = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var isAndroid = /Android/.test(ua);
+  if (isIOS) document.getElementById('android').className = 'hide';
+  if (isAndroid) document.getElementById('ios').className = 'hide';
+</script>
+</body>
+</html>
